@@ -1,0 +1,31 @@
+﻿<Window x:Class="PicCheck.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Pic Check" Height="1000" Width="1500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Folder selection and display -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Content="Select Source Folder" Margin="0,0,5,0" Click="SelectSourceFolder_Click"/>
+            <TextBox x:Name="SourceFolderPath" IsReadOnly="True" Width="400"/>
+            <Button Content="Select Target Folder" Margin="10,0,5,0" Click="SelectTargetFolder_Click"/>
+            <TextBox x:Name="TargetFolderPath" IsReadOnly="True" Width="400"/>
+            <Button Content="Start" Margin="10,0,0,0" Click="Start_Click"/>
+        </StackPanel>
+
+        <!-- Image display -->
+        <WrapPanel Grid.Row="1" x:Name="ImagePanel"/>
+
+        <!-- Command buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Ex" Margin="5" Click="Ex_Click"/>
+            <Button Content="Fine" Margin="5" Click="Fine_Click"/>
+            <Button Content="Next" Margin="5" Click="Next_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

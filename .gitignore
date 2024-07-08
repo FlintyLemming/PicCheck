@@ -1,0 +1,114 @@
+## 忽略 Visual Studio 临时文件、生成文件和文件夹
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# 忽略所有的 NuGet Packages
+*.nupkg
+# 忽略 NuGet 符号包
+*.snupkg
+# 忽略已发布的应用程序
+publish/
+
+# 忽略 NuGet 配置文件
+nuget.config
+
+# 忽略包含在 .NET Core 中的项目文件夹
+**/[Pp]ackages/
+**/[Pp]roject.lock.json
+project.assets.json
+
+# 忽略 Rider IDE 创建的目录
+.idea/
+.idea/**/contentModel.xml
+
+# 忽略 VS Code 文件夹
+.vscode/
+.vscode/*
+
+# 忽略 Visual Studio 临时文件
+.vs/
+.vs/**/v15/
+.vs/**/v16/
+.vs/**/v17/
+
+# 忽略用户特定的 VS 编辑器文件
+*.user
+*.suo
+
+# 忽略所有 ISO 文件，可能由一些项目生成
+*.iso
+
+# 忽略全局配置文件
+global.json
+
+# 忽略 Build Results 的 Json 文件
+TestResults/
+
+# 忽略 MSBuild 的日志和配置文件
+*.log
+*.sln.docstates
+
+# 忽略项目中的所有 SQL 文件
+*.sql
+*.ldf
+*.mdf
+
+# 忽略所有的 YML 文件，通常用于 CI/CD 配置
+*.yml
+
+# 忽略 Windows image 文件
+*.swm
+*.wim
+*.esd
+
+# 忽略 TypeScript 文件
+*.ts
+
+# 忽略 Webpack 缓存文件
+.webpack/
+
+# 忽略 Docker 配置文件
+docker-compose*.yml
+
+# 忽略本地环境变量文件
+.env
+
+# 忽略包含敏感信息的文件
+secrets.json
+
+# 忽略持续集成生成的文件
+ci-build/
+*.[Cc]ache/
+*.bak
+*.tmp
+*~
+*.swp
+
+# 忽略文件夹，这些文件夹由一些工具自动创建
+__pycache__/
+*.py[cod]
+
+# 忽略 MacOS 文件系统的文件
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 忽略缩略图缓存
+._*
+
+# 忽略 Spotlight 元数据
+.Spotlight-V100
+
+# 忽略 Windows 图标缓存
+Thumbs.db
+
+# 忽略 Windows 错误报告文件
+ehthumbs.db
