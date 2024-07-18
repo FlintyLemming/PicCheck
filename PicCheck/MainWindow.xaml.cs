@@ -122,18 +122,52 @@ namespace PicCheck
         private void MoveAndRenameFolder(string suffix)
         {
             string newFolderPath = Path.Combine(targetFolderPath, currentDirectory.Name + suffix);
-            Directory.Move(currentDirectory.FullName, newFolderPath);
+            // 首先复制文件夹到新的位置
+            CopyDirectory(currentDirectory.FullName, newFolderPath);
+
+            // 删除原始文件夹
+            Directory.Delete(currentDirectory.FullName, true);
             ProcessNextFolder();
+        }
+
+        // 递归复制文件夹的方法
+        private void CopyDirectory(string sourceDir, string destinationDir)
+        {
+            DirectoryInfo dir = new DirectoryInfo(sourceDir);
+
+            // 如果目标目录不存在，则创建它
+            if (!Directory.Exists(destinationDir))
+            {
+                Directory.CreateDirectory(destinationDir);
+            }
+
+            // 获取源目录文件和子目录
+            FileInfo[] files = dir.GetFiles();
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            // 复制所有文件
+            foreach (FileInfo file in files)
+            {
+                string targetFilePath = Path.Combine(destinationDir, file.Name);
+                file.CopyTo(targetFilePath, true); // 可以选择覆盖现有文件
+            }
+
+            // 递归复制所有子目录
+            foreach (DirectoryInfo subdir in dirs)
+            {
+                string newSubDirPath = Path.Combine(destinationDir, subdir.Name);
+                CopyDirectory(subdir.FullName, newSubDirPath);
+            }
         }
 
         private void Ex_Click(object sender, RoutedEventArgs e)
         {
-            MoveAndRenameFolder("【Ex】");
+            MoveAndRenameFolder(" 【Ex】");
         }
 
         private void Fine_Click(object sender, RoutedEventArgs e)
         {
-            MoveAndRenameFolder("【Fine】");
+            MoveAndRenameFolder(" 【Fine】");
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
