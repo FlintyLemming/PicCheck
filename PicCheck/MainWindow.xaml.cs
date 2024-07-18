@@ -81,23 +81,25 @@ namespace PicCheck
         private async void DisplayImagesFromFolder(DirectoryInfo directory)
         {
             ImagePanel.Children.Clear();
+            CurrentFolderPathText.Text = "Current Folder Path: " + directory.FullName;  // 更新当前文件夹路径显示
+
             var images = directory.GetFiles("*.jpg").Concat(directory.GetFiles("*.png")).OrderBy(x => Guid.NewGuid()).Take(12);
 
             foreach (var image in images)
             {
                 var imageControl = new System.Windows.Controls.Image { Width = 350, Height = 270, Margin = new Thickness(5) };
-                imageControl.MouseLeftButtonDown += ImageControl_MouseLeftButtonDown; // 注册 MouseLeftButtonDown 事件
-                imageControl.Tag = image.FullName; // 存储图片路径，以便在事件处理器中使用
+                imageControl.MouseLeftButtonDown += ImageControl_MouseLeftButtonDown;
+                imageControl.Tag = image.FullName;
                 ImagePanel.Children.Add(imageControl);
                 await Task.Run(() =>
                 {
                     var bitmap = new BitmapImage();
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(image.FullName);
-                    bitmap.DecodePixelWidth = 700; // 调整图片解码宽度
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad; // 设置缓存选项
+                    bitmap.DecodePixelWidth = 700;
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
                     bitmap.EndInit();
-                    bitmap.Freeze(); // 必须在非UI线程中调用Freeze
+                    bitmap.Freeze();
                     Dispatcher.Invoke(() => imageControl.Source = bitmap);
                 });
             }

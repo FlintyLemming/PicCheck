@@ -7,22 +7,26 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Folder selection and display -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
             <Button Content="Select Source Folder" Margin="0,0,5,0" Click="SelectSourceFolder_Click"/>
-            <TextBox x:Name="SourceFolderPath" IsReadOnly="True" Width="400"/>
+            <TextBox x:Name="SourceFolderPath" Width="400"/>
             <Button Content="Select Target Folder" Margin="10,0,5,0" Click="SelectTargetFolder_Click"/>
-            <TextBox x:Name="TargetFolderPath" IsReadOnly="True" Width="400"/>
+            <TextBox x:Name="TargetFolderPath" Width="400"/>
             <Button Content="Start" Margin="10,0,0,0" Click="Start_Click"/>
         </StackPanel>
 
+        <!-- Current Folder Path -->
+        <TextBlock Grid.Row="1" x:Name="CurrentFolderPathText" Text="Current Folder Path: " Margin="5" />
+
         <!-- Image display -->
-        <WrapPanel Grid.Row="1" x:Name="ImagePanel"/>
+        <WrapPanel Grid.Row="2" x:Name="ImagePanel"/>
 
         <!-- Command buttons -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Ex" Margin="5" Click="Ex_Click"/>
             <Button Content="Fine" Margin="5" Click="Fine_Click"/>
             <Button Content="Next" Margin="5" Click="Next_Click"/>
